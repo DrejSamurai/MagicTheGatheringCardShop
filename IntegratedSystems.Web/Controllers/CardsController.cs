@@ -198,6 +198,26 @@ namespace IntegratedSystems.Web.Controllers
             else { return View(model); }
         }
 
+
+        [HttpPost("[action]")]
+        public bool ImportAllMovies(List<Card> model)
+        {
+            bool status = true;
+
+            foreach (var item in model)
+            {
+                var card = new Card
+                {
+                    CardDescription = item.CardDescription,
+                    CardName = item.CardName,
+                    CardImage = item.CardImage
+                };
+                _cardService.CreateNewCard(null, card);
+            }
+            return status;
+        }
+
+
         private bool ProductExists(Guid id)
         {
             return _cardService.GetCardById(id) != null;

@@ -21,6 +21,9 @@ namespace IntegratedSystems.Domain.Domain_Models
         public string? CardDescription { get; set; }
 
         [Required]
+        public string? CardImage { get; set; }
+
+        [Required]
         public double Price { get; set; }
 
         [Required]
