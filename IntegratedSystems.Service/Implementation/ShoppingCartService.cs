@@ -35,6 +35,13 @@ namespace IntegratedSystems.Service.Implementation
             {
                 var loggedInUser = _userRepository.Get(userId);
 
+                if(loggedInUser.UserCart == null)
+                {
+                    ShoppingCart shoppingCart = new ShoppingCart();
+                    _shoppingCartRepository.Insert(shoppingCart);
+                    loggedInUser.UserCart = shoppingCart;
+                }
+
                 var userCart = loggedInUser?.UserCart;
 
                 var selectedCard = _cardRepository.Get(model.SelectedCardId);

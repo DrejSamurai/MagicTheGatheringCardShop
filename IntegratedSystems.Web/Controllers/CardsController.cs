@@ -188,6 +188,7 @@ namespace IntegratedSystems.Web.Controllers
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
+
             var result = _shoppingCartService.AddCardToShoppingCart(userId,model);
 
             if (result != null)
