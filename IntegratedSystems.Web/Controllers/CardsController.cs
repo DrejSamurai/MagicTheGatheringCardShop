@@ -67,7 +67,7 @@ namespace IntegratedSystems.Web.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ExpansionId,CardName,CardDescription,Price,Rating,Rarity,Id")] Card card)
+        public async Task<IActionResult> Create([Bind("ExpansionId,CardName,CardDescription,CardImage,Price,Rating,Rarity,Id")] Card card)
         {
             if (ModelState.IsValid)
             {
@@ -189,7 +189,7 @@ namespace IntegratedSystems.Web.Controllers
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
 
-            var result = _shoppingCartService.AddCardToShoppingCart(userId,model);
+            var result = _shoppingCartService.AddCardToShoppingCart(userId, model);
 
             if (result != null)
             {
@@ -200,7 +200,7 @@ namespace IntegratedSystems.Web.Controllers
 
 
         [HttpPost("[action]")]
-        public bool ImportAllMovies(List<Card> model)
+        public bool ImportAllCards(List<Card> model)
         {
             bool status = true;
 

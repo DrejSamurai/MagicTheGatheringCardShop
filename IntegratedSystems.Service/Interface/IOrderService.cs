@@ -10,6 +10,7 @@ namespace IntegratedSystems.Service.Interface
     public interface IOrderService
     {
         List<Order> GetAllOrders();
+        List<Order> GetAllUserOrders(string id);
         Order GetDetailsForOrder(BaseEntity id);
     }
 }
