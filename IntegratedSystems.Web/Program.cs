@@ -29,6 +29,10 @@ builder.Services.AddTransient<ICardService, CardService>();
 builder.Services.AddTransient<IShoppingCartService, ShoppingCartService>();
 builder.Services.AddTransient<IExpansionService, ExpansionService>();
 builder.Services.AddTransient<IOrderService, OrderService>();
+
+builder.Services.AddControllersWithViews().AddNewtonsoftJson(options =>
+    options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
