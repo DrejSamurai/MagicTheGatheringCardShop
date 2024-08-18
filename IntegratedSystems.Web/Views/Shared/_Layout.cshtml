@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="~/IntegratedSystems.Web.styles.css" asp-append-version="true" />
     <style>
         body {
-            background-color: #4F1C70;
+            background-color: #1d1f26;
             color: #ffffff;
             min-height: 100vh;
             display: flex;
@@ -22,7 +22,7 @@
         }
 
         footer {
-            background: linear-gradient(135deg, #2D063C, #5B2483);
+            background: #2e323c;
             padding: 20px 0;
             color: white;
             text-align: center;
@@ -116,19 +116,24 @@
             overflow: hidden;
         }
 
+        .navbar {
+            border-bottom: none !important;
+        }
+
         .header-logo {
             max-height: 110px;
             width: auto;
         }
 
         header {
-            background-color: #5B2483 !important; /* Purple background */
+            background-color: #2e323c !important; 
         }
+
 
             header .nav-link,
             header .navbar-brand,
             header .btn {
-                color: #C48000 !important; /* Yellow text */
+                color: #C48000 !important; 
                 font-weight: bold
             }
 
@@ -144,7 +149,7 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow">
             <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
                     <img src="/images/mtg_logo.png" alt="Logo" class="header-logo" />

@@ -5,51 +5,135 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Edit</h1>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <form asp-action="Edit" class="custom-form">
+                <div class="form-content">
+                    <h1 class="text-center">Edit Expansion</h1>
+                    <hr />
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-<h4>Expansion</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="ExpansionName" class="control-label"></label>
-                <input asp-for="ExpansionName" class="form-control" />
-                <span asp-validation-for="ExpansionName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ExpansionDescription" class="control-label"></label>
-                <input asp-for="ExpansionDescription" class="form-control" />
-                <span asp-validation-for="ExpansionDescription" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ExpansionImage" class="control-label"></label>
-                <input asp-for="ExpansionImage" class="form-control" />
-                <span asp-validation-for="ExpansionImage" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Rating" class="control-label"></label>
-                <input asp-for="Rating" class="form-control" />
-                <span asp-validation-for="Rating" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="CardNumber" class="control-label"></label>
-                <input asp-for="CardNumber" class="form-control" />
-                <span asp-validation-for="CardNumber" class="text-danger"></span>
-            </div>
-            <input type="hidden" asp-for="Id" />
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
+                    <div class="form-group mb-3">
+                        <label asp-for="ExpansionName" class="custom-label"></label>
+                        <input asp-for="ExpansionName" class="form-control custom-input" />
+                        <span asp-validation-for="ExpansionName" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label asp-for="ExpansionDescription" class="custom-label"></label>
+                        <input asp-for="ExpansionDescription" class="form-control custom-input" />
+                        <span asp-validation-for="ExpansionDescription" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label asp-for="ExpansionImage" class="custom-label"></label>
+                        <input asp-for="ExpansionImage" class="form-control custom-input" />
+                        <span asp-validation-for="ExpansionImage" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label asp-for="Rating" class="custom-label"></label>
+                        <input asp-for="Rating" class="form-control custom-input" />
+                        <span asp-validation-for="Rating" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label asp-for="CardNumber" class="custom-label"></label>
+                        <input asp-for="CardNumber" class="form-control custom-input" />
+                        <span asp-validation-for="CardNumber" class="text-danger"></span>
+                    </div>
+
+                    <input type="hidden" asp-for="Id" />
+                </div>
+
+                <div class="button-container">
+                    <input type="submit" value="Save" class="custom-button" />
+                    <a asp-action="Index" class="cancel-button">Cancel</a>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }
+
+<style>
+    .custom-form {
+        background-color: #2e323c;
+        padding: 60px;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        max-width: 700px;
+        margin: 0 auto;
+        min-height: 600px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .form-content {
+        margin-bottom: 20px;
+    }
+
+    .custom-input {
+        background-color: lightgray;
+        border: 1px solid lightgray;
+        padding: 15px;
+        font-size: 16px;
+        border-radius: 8px;
+    }
+
+        .custom-input:focus {
+            border-color: #80bdff;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.25);
+        }
+
+    .custom-label {
+        font-weight: 600;
+        font-size: 14px;
+        color: #495057;
+    }
+
+    .custom-button {
+        background-color: #F6A000;
+        border: none;
+        color: white;
+        padding: 12px;
+        font-size: 18px;
+        border-radius: 8px;
+        margin-right: 10px;
+    }
+
+        .custom-button:hover {
+            background-color: #C48000;
+        }
+
+    .cancel-button {
+        background-color: #dc3545;
+        border: none;
+        color: white;
+        padding: 12px;
+        font-size: 18px;
+        border-radius: 8px;
+        text-decoration: none; 
+    }
+
+        .cancel-button:hover {
+            background-color: #c82333; 
+        }
+
+    .button-container {
+        display: flex;
+        justify-content: center;
+        gap: 15px; 
+    }
+
+    h1 {
+        color: #F6A000;
+    }
+</style>
