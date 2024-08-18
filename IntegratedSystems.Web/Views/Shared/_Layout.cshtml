@@ -7,6 +7,99 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/IntegratedSystems.Web.styles.css" asp-append-version="true" />
+    <style>
+        body {
+            background-color: #4F1C70;
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            margin: 0; /* Ensure there's no margin around the body */
+        }
+
+        .content {
+            flex: 1;
+        }
+
+        footer {
+            background: linear-gradient(135deg, #2D063C, #5B2483);
+            padding: 20px 0;
+            color: white;
+            text-align: center;
+            width: 100%; /* Ensure footer spans the full width */
+        }
+
+        .footer-logo {
+            max-width: 150px;
+        }
+
+        .footer-title {
+            color: #9c79b5;
+        }
+
+        .address-text {
+            color: white;
+        }
+
+        .icons-container {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 10px;
+        }
+
+        .icon-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .shield-icon {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            background: #000;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            z-index: 1;
+        }
+
+        .social-icon {
+            position: relative;
+            z-index: 2;
+            color: white;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+        }
+
+            .social-icon:hover {
+                color: #9c79b5;
+            }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 10px;
+        }
+
+        .footer-link {
+            color: #9c79b5;
+            text-decoration: none;
+        }
+
+            .footer-link:hover {
+                text-decoration: underline;
+            }
+    </style>
 </head>
 <body>
     <header>
@@ -21,12 +114,12 @@
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>  
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Cards" asp-action="Index">Cards</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Expansions" asp-action="Index">Exapnsions</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Expansions" asp-action="Index">Expansions</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="ShoppingCarts" asp-action="Index">ShoppingCart</a>
@@ -45,17 +138,50 @@
             </div>
         </nav>
     </header>
-    <div class="container">
+    <div class="content">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
-
-    <footer class="border-top footer text-muted">
+    <footer>
         <div class="container">
-            &copy; 2024 - IntegratedSystems.Web - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            <div class="row">
+                <div class="col-12 col-md-4 d-flex justify-content-center justify-content-md-start">
+                    <img src="~/assets/images/safe2transact-logo-white.svg" alt="Company Logo" class="footer-logo" />
+                </div>
+                <div class="col-12 col-md-4">
+                    <h6 class="footer-title">MTG Store</h6>
+                </div>
+                <div class="col-12 col-md-4 d-flex justify-content-center">
+                    <div class="icons-container">      
+                        <div class="icon-wrapper">
+                        <div class="shield-icon">
+                        <i class="fa fa-instagram"></i>
+                        </div>
+                        <a href="#" class="social-icon">
+                        <i class="fa fa-instagram"></i>
+                        </a>
+                        </div>
+                        <div class="icon-wrapper">
+                        <div class="shield-icon">
+                        <i class="fa fa-linkedin"></i>
+                        </div>
+                        <a href="#" class="social-icon">
+                        <i class="fa fa-linkedin"></i>
+                        </a>
+                        </div>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-links">
+            <a href="#" class="footer-link">Privacy Policy</a>
+            <a href="#" class="footer-link">Terms of Service</a>
+            <a href="#" class="footer-link">Cookies Policy</a>
         </div>
     </footer>
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
