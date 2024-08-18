@@ -1,29 +1,88 @@
-﻿@model IntegratedSystems.Domain.DTO.AddToCartDTO;
+﻿@model IntegratedSystems.Domain.DTO.AddToCartDTO
 
-<div class="container">
-    <form method="post" asp-action="AddProductToCart">
+<head>
+    <style>
+        .custom-form {
+            background-color: #2e323c;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 0 auto;
+            min-height: 400px; 
+        }
 
-        <input type="hidden" asp-for="SelectedCardId" value="@Model.SelectedCardId" class="form-control" />
+        .form-group {
+            margin-bottom: 15px;
+        }
 
-        <div class="row mt-4">
+        .custom-label {
+            font-weight: 600;
+            color: #F6A000;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .custom-input {
+            background-color: #ffffff;
+            border: 1px solid #ced4da;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 4px;
+            width: 100%;
+        }
+
+            .custom-input:focus {
+                border-color: #80bdff;
+                box-shadow: 0 0 5px rgba(0, 123, 255, 0.25);
+                outline: none;
+            }
+
+        .custom-button {
+            background-color: #28a745;
+            border: none;
+            color: white;
+            padding: 12px 20px;
+            font-size: 18px;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            text-align: center;
+        }
+
+            .custom-button:hover {
+                background-color: #218838;
+            }
+
+        h1 {
+            color: #F6A000;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<div class="container mt-5">
+    <div class="custom-form">
+        <h1>Add to Cart</h1>
+        <form method="post" asp-action="AddProductToCart">
+
+            <input type="hidden" asp-for="SelectedCardId" value="@Model.SelectedCardId" class="form-control" />
+
             <div class="form-group">
-                <label asp-for="SelectedCardName" class="control-label"></label>
-                <input asp-for="SelectedCardName" class="form-control" />
+                <label asp-for="SelectedCardName" class="custom-label"></label>
+                <input asp-for="SelectedCardName" class="custom-input" />
                 <span asp-validation-for="SelectedCardName" class="text-danger"></span>
             </div>
-        </div>
 
-        <div class="row mt-4">
             <div class="form-group">
-                <label asp-for="Quantity" class="control-label"></label>
-                <input asp-for="Quantity" type="number" class="form-control" />
+                <label asp-for="Quantity" class="custom-label"></label>
+                <input asp-for="Quantity" type="number" class="custom-input" />
                 <span asp-validation-for="Quantity" class="text-danger"></span>
             </div>
-        </div>
 
-        <div class="row mt-4">
-            <button type="submit" class="btn btn-success">Add To Cart</button>
-        </div>
-    </form>
-
+            <div class="form-group">
+                <button type="submit" class="custom-button">Add To Cart</button>
+            </div>
+        </form>
+    </div>
 </div>

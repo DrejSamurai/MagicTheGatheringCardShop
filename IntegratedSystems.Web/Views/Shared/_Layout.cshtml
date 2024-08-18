@@ -7,12 +7,153 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/IntegratedSystems.Web.styles.css" asp-append-version="true" />
+    <style>
+        body {
+            background-color: #1d1f26;
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            margin: 0;
+        }
+
+        .content {
+            flex: 1;
+        }
+
+        footer {
+            background: #2e323c;
+            padding: 20px 0;
+            color: white;
+            text-align: center;
+            width: 100%;
+        }
+
+        .footer-logo {
+            max-width: 150px;
+        }
+
+        .footer-title {
+            color: #9c79b5;
+            margin: 0;
+            line-height: 1.5;
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+
+        .address-text {
+            color: white;
+        }
+
+        .icons-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .icon-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .shield-icon {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            z-index: 1;
+        }
+
+        .social-icon {
+            position: relative;
+            z-index: 2;
+            color: white;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+        }
+
+            .social-icon img {
+                width: 30px;
+                height: 30px;
+            }
+
+            .social-icon:hover {
+                color: #9c79b5;
+            }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 10px;
+        }
+
+        .footer-link {
+            color: #9c79b5;
+            text-decoration: none;
+        }
+
+            .footer-link:hover {
+                text-decoration: underline;
+            }
+
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            max-height: 60px;
+            overflow: hidden;
+        }
+
+        .navbar {
+            border-bottom: none !important;
+        }
+
+        .header-logo {
+            max-height: 110px;
+            width: auto;
+        }
+
+        header {
+            background-color: #2e323c !important; 
+        }
+
+
+            header .nav-link,
+            header .navbar-brand,
+            header .btn {
+                color: #C48000 !important; 
+                font-weight: bold
+            }
+
+            header .btn-outline-success {
+                border-color: #C48000;
+            }
+
+                header .btn-outline-success:hover {
+                    background-color: #C48000;
+                    color: #5B2483 !important;
+                }
+    </style>
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">IntegratedSystems.Web</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+                    <img src="/images/mtg_logo.png" alt="Logo" class="header-logo" />
+                </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -20,22 +161,22 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>  
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Cards" asp-action="Index">Cards</a>
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Expansions" asp-action="Index">Exapnsions</a>
+                            <a class="nav-link" asp-area="" asp-controller="Cards" asp-action="Index">Cards</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="ShoppingCarts" asp-action="Index">ShoppingCart</a>
+                            <a class="nav-link" asp-area="" asp-controller="Expansions" asp-action="Index">Expansions</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="ShoppingCarts" asp-action="Index">ShoppingCart</a>
                         </li>
                         <li class="nav-item ms-3">
                             <a class="nav-link btn btn-outline-success" asp-area="" asp-controller="ShoppingCarts" asp-action="ExportAllUserCardOrders">
                                 Export my card orders
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-spreadsheet" viewBox="0 0 16 16">
-                                    <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2M9.5 3A1.5 1.5 0 0 0 11 4.5h2V9H3V2a1 1 0 0 1 1-1h5.5zM3 12v-2h2v2zm0 1h2v2H4a1 1 0 0 1-1-1zm3 2v-2h3v2zm4 0v-2h3v1a1 1 0 0 1-1 1zm3-3h-3v-2h3zm-7 0v-2h3v2z" />
+                                    <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 2 2-2M9.5 3A1.5 1.5 0 0 0 11 4.5h2V9H3V2a1 1 0 0 1 1-1h5.5zM3 12v-2h2v2zm0 1h2v2H4a1 1 0 0 1-1-1zm3 2v-2h3v2zm4 0v-2h3v1a1 1 0 0 1-1 1zm3-3h-3v-2h3zm-7 0v-2h3v2z" />
                                 </svg>
                             </a>
                         </li>
@@ -45,17 +186,49 @@
             </div>
         </nav>
     </header>
-    <div class="container">
+    <div class="content">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
-
-    <footer class="border-top footer text-muted">
+    <footer>
         <div class="container">
-            &copy; 2024 - IntegratedSystems.Web - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            <div class="row">
+                <div class="col-12 col-md-4 d-flex justify-content-center justify-content-md-start">
+                    <img src="/images/logo.png" class="footer-logo" />
+                </div>
+                <div class="col-12 col-md-4 d-flex justify-content-center">
+                    <h6 class="footer-title">MTG Store</h6>
+                </div>
+                <div class="col-12 col-md-4 d-flex justify-content-center">
+                    <div class="icons-container">
+                        <div class="icon-wrapper">
+                            <div class="shield-icon">
+                            </div>
+                            <a href="#" class="social-icon">
+                                <img src="/images/facebook.png" alt="Facebook" class="social-image" />
+                            </a>
+                        </div>
+                        <div class="icon-wrapper">
+                            <div class="shield-icon">
+                            </div>
+                            <a href="#" class="social-icon">
+                                <img src="/images/instagram.png" alt="Instagram" class="social-image" />
+                            </a>
+                        </div>
+                        <div class="icon-wrapper">
+                            <div class="shield-icon">
+                            </div>
+                            <a href="#" class="social-icon">
+                                <img src="/images/linkedin.png" alt="LinkedIn" class="social-image" />
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </footer>
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

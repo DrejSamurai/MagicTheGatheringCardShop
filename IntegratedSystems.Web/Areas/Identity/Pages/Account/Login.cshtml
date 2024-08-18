@@ -1,0 +1,149 @@
+﻿@page
+@model LoginModel
+
+@{
+    ViewData["Title"] = "Log in";
+}
+
+<head>
+    <style>
+        .custom-form {
+            background-color: #2e323c;
+            padding: 60px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 700px;
+            margin: 0 auto;
+            min-height: 600px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .form-content {
+            margin-bottom: 20px;
+        }
+
+        .custom-input {
+            background-color: lightgray;
+            border: 1px solid lightgray;
+            padding: 15px;
+            font-size: 16px;
+            border-radius: 8px;
+        }
+
+            .custom-input:focus {
+                border-color: #80bdff;
+                box-shadow: 0 0 5px rgba(0, 123, 255, 0.25);
+            }
+
+        .custom-label {
+            font-weight: 600;
+            font-size: 14px;
+            color: #495057;
+        }
+
+        .custom-button {
+            background-color: #F6A000;
+            border: none;
+            color: white;
+            padding: 12px;
+            font-size: 18px;
+            border-radius: 8px;
+        }
+
+            .custom-button:hover {
+                background-color: #C48000;
+            }
+
+        .checkbox-container {
+            display: flex;
+            align-items: center;
+            margin-top: 15px;
+        }
+
+        .checkbox-input {
+            transform: scale(1.5);
+            margin-right: 10px;
+        }
+
+        .checkbox-label {
+            font-size: 16px;
+            color: white;
+        }
+
+            .checkbox-label a {
+                color: #F6A000;
+            }
+
+        h2 {
+            color: #F6A000;
+        }
+
+        .links-container {
+            display: flex;
+            gap: 15px; 
+            justify-content: center; 
+        }
+
+        .link-style {
+            color: #F6A000; 
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+            .link-style:hover {
+                text-decoration: underline; 
+            }
+    </style>
+</head>
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <form id="account" method="post" class="custom-form">
+                <div class="form-content">
+                    <h2 class="text-center">Log in</h2>
+                    <hr />
+                    <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
+
+                    <div class="form-floating mb-3">
+                        <input asp-for="Input.Email" class="form-control custom-input" autocomplete="username" aria-required="true" placeholder="name@example.com" />
+                        <label asp-for="Input.Email" class="custom-label">Email</label>
+                        <span asp-validation-for="Input.Email" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <input asp-for="Input.Password" class="form-control custom-input" autocomplete="current-password" aria-required="true" placeholder="Password" />
+                        <label asp-for="Input.Password" class="custom-label">Password</label>
+                        <span asp-validation-for="Input.Password" class="text-danger"></span>
+                    </div>
+
+                    <div class="checkbox-container">
+                        <input class="checkbox-input" asp-for="Input.RememberMe" />
+                        <label asp-for="Input.RememberMe" class="checkbox-label">
+                            @Html.DisplayNameFor(m => m.Input.RememberMe)
+                        </label>
+                    </div>
+                </div>
+
+                <button id="login-submit" type="submit" class="w-100 btn btn-lg custom-button">Log in</button>
+
+                <div class="form-content">
+                    <div class="links-container">
+                        <p>
+                            <a id="forgot-password" asp-page="./ForgotPassword" class="link-style">Forgot your password?</a>
+                        </p>
+                        <p>
+                            <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl" class="link-style">Register as a new user</a>
+                        </p>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

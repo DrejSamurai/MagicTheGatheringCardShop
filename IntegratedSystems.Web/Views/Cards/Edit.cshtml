@@ -1,60 +1,162 @@
 ﻿@model IntegratedSystems.Domain.Domain_Models.Card
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Edit Card";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Edit</h1>
+<head>
+    <style>
+        .custom-form {
+            background-color: #2e323c;
+            padding: 60px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 700px;
+            margin: 0 auto;
+            min-height: 600px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
 
-<h4>Card</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="ExpansionId" class="control-label"></label>
-                <select asp-for="ExpansionId" class="form-control" asp-items="ViewBag.ExpansionId"></select>
-                <span asp-validation-for="ExpansionId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="CardName" class="control-label"></label>
-                <input asp-for="CardName" class="form-control" />
-                <span asp-validation-for="CardName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="CardDescription" class="control-label"></label>
-                <input asp-for="CardDescription" class="form-control" />
-                <span asp-validation-for="CardDescription" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Price" class="control-label"></label>
-                <input asp-for="Price" class="form-control" />
-                <span asp-validation-for="Price" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Rating" class="control-label"></label>
-                <input asp-for="Rating" class="form-control" />
-                <span asp-validation-for="Rating" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Rarity" class="control-label"></label>
-                <input asp-for="Rarity" class="form-control" />
-                <span asp-validation-for="Rarity" class="text-danger"></span>
-            </div>
-            <input type="hidden" asp-for="Id" />
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
+        .form-content {
+            margin-bottom: 20px;
+        }
+
+        .custom-input {
+            background-color: lightgray;
+            border: 1px solid lightgray;
+            padding: 15px;
+            font-size: 16px;
+            border-radius: 8px;
+        }
+
+            .custom-input:focus {
+                border-color: #80bdff;
+                box-shadow: 0 0 5px rgba(0, 123, 255, 0.25);
+            }
+
+        .custom-label {
+            font-weight: 600;
+            font-size: 14px;
+            color: #495057;
+        }
+
+        .custom-button {
+            background-color: #F6A000;
+            border: none;
+            color: white;
+            padding: 12px;
+            font-size: 18px;
+            border-radius: 8px;
+            margin-right: 10px;
+        }
+
+            .custom-button:hover {
+                background-color: #C48000;
+            }
+
+        .cancel-button {
+            background-color: #dc3545; 
+            border: none;
+            color: white;
+            padding: 12px;
+            font-size: 18px;
+            border-radius: 8px;
+        }
+
+            .cancel-button:hover {
+                background-color: #c82333; 
+            }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .links-container {
+            display: flex;
+            gap: 15px; 
+            justify-content: center; 
+        }
+
+        .link-style {
+            color: #F6A000; 
+            text-decoration: none; 
+            font-size: 16px;
+        }
+
+            .link-style:hover {
+                text-decoration: underline; 
+            }
+
+        h1, h4 {
+            color: #F6A000;
+        }
+    </style>
+</head>
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <form asp-action="Edit" class="custom-form">
+                <div class="form-content">
+                    <h1 class="text-center">Edit Card</h1>
+                    <hr />
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    <div class="form-group mb-3">
+                        <label asp-for="ExpansionId" class="custom-label"></label>
+                        <select asp-for="ExpansionId" class="form-control custom-input" asp-items="ViewBag.ExpansionId"></select>
+                        <span asp-validation-for="ExpansionId" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label asp-for="CardName" class="custom-label"></label>
+                        <input asp-for="CardName" class="form-control custom-input" />
+                        <span asp-validation-for="CardName" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label asp-for="CardDescription" class="custom-label"></label>
+                        <input asp-for="CardDescription" class="form-control custom-input" />
+                        <span asp-validation-for="CardDescription" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label asp-for="Price" class="custom-label"></label>
+                        <input asp-for="Price" class="form-control custom-input" />
+                        <span asp-validation-for="Price" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label asp-for="Rating" class="custom-label"></label>
+                        <input asp-for="Rating" class="form-control custom-input" />
+                        <span asp-validation-for="Rating" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label asp-for="Rarity" class="custom-label"></label>
+                        <input asp-for="Rarity" class="form-control custom-input" />
+                        <span asp-validation-for="Rarity" class="text-danger"></span>
+                    </div>
+
+                    <input type="hidden" asp-for="Id" />
+                </div>
+
+                <div class="button-container">
+                    <input type="submit" value="Save" class="custom-button" />
+                    <a asp-action="Index" class="cancel-button">Cancel</a>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

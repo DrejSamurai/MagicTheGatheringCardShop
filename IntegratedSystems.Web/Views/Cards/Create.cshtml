@@ -1,63 +1,140 @@
 ﻿@model IntegratedSystems.Domain.Domain_Models.Card
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Create Card";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Create</h1>
+<head>
+    <style>
+        .custom-form {
+            background-color: #2e323c;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 0 auto;
+            min-height: 600px; 
+        }
 
-<h4>Card</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .custom-label {
+            font-weight: 600;
+            color: #F6A000;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .custom-input {
+            background-color: #ffffff;
+            border: 1px solid #ced4da;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 4px;
+            width: 100%;
+        }
+
+            .custom-input:focus {
+                border-color: #80bdff;
+                box-shadow: 0 0 5px rgba(0, 123, 255, 0.25);
+                outline: none;
+            }
+
+        .custom-button {
+            background-color: #F6A000;
+            border: none;
+            color: white;
+            padding: 12px 20px;
+            font-size: 18px;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+            .custom-button:hover {
+                background-color: #C48000;
+            }
+
+        .back-button {
+            background-color: #dc3545; 
+            border: none;
+            color: white;
+            padding: 12px 20px;
+            font-size: 18px;
+            border-radius: 4px;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 10px;
+            width: 100%;
+            text-align: center;
+            cursor: pointer;
+        }
+
+            .back-button:hover {
+                background-color: #c82333;
+            }
+
+        h1, h4 {
+            color: #F6A000;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<div class="container mt-5">
+    <div class="custom-form">
+        <h1>Create Card</h1>
+        <h4>Card Details</h4>
+        <hr />
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="ExpansionId" class="control-label"></label>
-                <select asp-for="ExpansionId" class ="form-control" asp-items="ViewBag.ExpansionId"></select>
+                <label asp-for="ExpansionId" class="custom-label"></label>
+                <select asp-for="ExpansionId" class="custom-input" asp-items="ViewBag.ExpansionId"></select>
             </div>
             <div class="form-group">
-                <label asp-for="CardName" class="control-label"></label>
-                <input asp-for="CardName" class="form-control" />
+                <label asp-for="CardName" class="custom-label"></label>
+                <input asp-for="CardName" class="custom-input" />
                 <span asp-validation-for="CardName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="CardDescription" class="control-label"></label>
-                <input asp-for="CardDescription" class="form-control" />
+                <label asp-for="CardDescription" class="custom-label"></label>
+                <input asp-for="CardDescription" class="custom-input" />
                 <span asp-validation-for="CardDescription" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="CardImage" class="control-label"></label>
-                <input asp-for="CardImage" class="form-control" />
+                <label asp-for="CardImage" class="custom-label"></label>
+                <input asp-for="CardImage" class="custom-input" />
                 <span asp-validation-for="CardImage" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Price" class="control-label"></label>
-                <input asp-for="Price" class="form-control" />
+                <label asp-for="Price" class="custom-label"></label>
+                <input asp-for="Price" class="custom-input" />
                 <span asp-validation-for="Price" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Rating" class="control-label"></label>
-                <input asp-for="Rating" class="form-control" />
+                <label asp-for="Rating" class="custom-label"></label>
+                <input asp-for="Rating" class="custom-input" />
                 <span asp-validation-for="Rating" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Rarity" class="control-label"></label>
-                <input asp-for="Rarity" class="form-control" />
+                <label asp-for="Rarity" class="custom-label"></label>
+                <input asp-for="Rarity" class="custom-input" />
                 <span asp-validation-for="Rarity" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Create" class="custom-button" />
             </div>
         </form>
+        <a asp-action="Index" class="back-button">Cancel</a>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }
