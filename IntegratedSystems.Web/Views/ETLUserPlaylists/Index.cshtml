@@ -1,0 +1,62 @@
+﻿@model List<IntegratedSystems.Domain.ETL_Models.UserPlaylist>
+
+@{
+    ViewData["Title"] = "ETLUserPlaylists";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>ETL Playlists</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Owner
+            </th>
+            <th> Songs In Playlist </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Owner.Email)
+                </td>
+                <td>
+                    @if (item.TracksInPlaylist != null && item.TracksInPlaylist.Any())
+                    {
+                        foreach (var song in item.TracksInPlaylist)
+                        {
+                            <div>
+                                @song.Track.TrackName - @song.Track.Rating
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        <div>No tracks available</div>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<style>
+
+    table thead {
+        color: white;
+    }
+
+    table tbody tr{
+       color: white;
+    }
+
+</style>
